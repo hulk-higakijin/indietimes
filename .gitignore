@@ -17,3 +17,6 @@ target/
 *.pdb
 
 *.sqlite
+/target
+.shuttle*
+Secrets*.toml
