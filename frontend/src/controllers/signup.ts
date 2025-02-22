@@ -10,7 +10,7 @@ export const signupScheme = z.object({
 
 export const handleSignup = async (data: typeof signupScheme) => {
 	try {
-	 	const response = await ky
+		const response = await ky
 			.post(`${API_BASE_URL}/auth/register`, {
 				body: JSON.stringify(data),
 				headers: {
@@ -20,6 +20,7 @@ export const handleSignup = async (data: typeof signupScheme) => {
 			.json()
 
 		console.log(response) // Handle successful registration here
+		window.location.href = '/login?from=signup'
 	} catch (error) {
 		console.error('Error during registration:', error)
 	}
