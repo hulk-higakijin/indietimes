@@ -1,6 +1,4 @@
 'use client'
-
-import React, { useEffect } from 'react'
 // import facebookSvg from "@/images/Facebook.svg";
 // import twitterSvg from "@/images/Twitter.svg";
 // import googleSvg from "@/images/Google.svg";
@@ -10,10 +8,10 @@ import NcLink from '@/components/NcLink/NcLink'
 import Heading2 from '@/components/Heading/Heading2'
 import Image from 'next/image'
 import { ToastContainer, toast } from 'react-toastify'
-import { useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { handleLogin, loginScheme } from '@/controllers/login'
+import { useEffect } from 'react'
 
 // const loginSocials = [
 //   {
@@ -33,14 +31,18 @@ import { handleLogin, loginScheme } from '@/controllers/login'
 //   },
 // ];
 
-const PageLogin = ({}) => {
-	const searchParams = useSearchParams()
+const PageLogin = ({
+	searchParams,
+}: {
+	searchParams?: { [key: string]: string | string[] | undefined }
+}) => {
 	const notify = () => toast('Sign up successfully! Next step is to login')
-	useEffect(() => {
-		if (searchParams.get('from') === 'signup') {
-			notify()
-		}
-	}, [searchParams])
+
+  useEffect(() => {
+    if (searchParams?.from === 'signup') {
+      notify()
+    }
+  }, [searchParams])
 
 	const {
 		register,
