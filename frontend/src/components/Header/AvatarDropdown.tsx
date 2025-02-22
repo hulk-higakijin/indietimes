@@ -1,3 +1,5 @@
+'use client'
+
 import {
 	Popover,
 	PopoverButton,
@@ -12,10 +14,12 @@ import Link from 'next/link'
 import { API_BASE_URL, fetcher } from '@/utils/api'
 import useSWR from 'swr'
 import { CurrentResponse } from '@/controllers/current'
+import { useToken } from '@/hooks/useToken'
 
 export default function AvatarDropdown() {
+  const { token } = useToken()
 	const { data: current } = useSWR<CurrentResponse>(
-		[`${API_BASE_URL}/auth/current`, localStorage.getItem('token')!],
+		[`${API_BASE_URL}/auth/current`, token],
 		([url, token]: [string, string]) => fetcher(url, token),
 	)
 
