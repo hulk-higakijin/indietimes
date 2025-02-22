@@ -10,7 +10,7 @@ export const signupScheme = z.object({
 
 export const handleSignup = async (data: typeof signupScheme) => {
 	try {
-		const response = await ky
+	 	const response = await ky
 			.post(`${API_BASE_URL}/auth/register`, {
 				body: JSON.stringify(data),
 				headers: {

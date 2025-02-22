@@ -35,7 +35,7 @@ const PageSignUp = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
+		formState: { errors, isSubmitting, isValid },
 	} = useForm({
 		resolver: zodResolver(signupScheme),
 	})
@@ -94,7 +94,9 @@ const PageSignUp = () => {
 							<span className="text-red-500">{errors.password.message}</span>
 						)}
 					</label>
-					<ButtonPrimary type="submit">Continue</ButtonPrimary>
+					<ButtonPrimary type="submit" disabled={!isValid || isSubmitting}>
+						Continue
+					</ButtonPrimary>
 				</form>
 
 				<span className="block text-center text-neutral-700 dark:text-neutral-300">
