@@ -1,0 +1,11 @@
+[deploy]
+include = [
+    "config/*",
+    "assets/*",
+]
+
+[build]
+assets = [
+    "config/*",
+    "assets/*",
+]
