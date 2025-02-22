@@ -1,5 +1,6 @@
 import { API_BASE_URL } from '@/utils/api'
 import z from 'zod'
+import ky from 'ky'
 
 export const signupScheme = z.object({
 	name: z.string().min(1, 'Name is required'),
@@ -9,20 +10,16 @@ export const signupScheme = z.object({
 
 export const handleSignup = async (data: typeof signupScheme) => {
 	try {
-		const response = await fetch(`${API_BASE_URL}/auth/register`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify(data),
-		})
+		const response = await ky
+			.post(`${API_BASE_URL}/auth/register`, {
+				body: JSON.stringify(data),
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			})
+			.json()
 
-		if (!response.ok) {
-			throw new Error('Network response was not ok')
-		}
-
-		const result = await response.json()
-		console.log(result) // Handle successful registration here
+		console.log(response) // Handle successful registration here
 	} catch (error) {
 		console.error('Error during registration:', error)
 	}
