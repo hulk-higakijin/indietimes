@@ -32,6 +32,10 @@ server:
         uri: "/static"
         path: "assets/static"
       fallback: "assets/static/404.html"
+    cors:
+      enable: true
+      allow_origins:
+        - http://localhost:3000
 
 # Worker Configuration
 workers:

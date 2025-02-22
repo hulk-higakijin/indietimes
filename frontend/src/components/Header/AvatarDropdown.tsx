@@ -11,8 +11,18 @@ import { Fragment } from 'react'
 import Avatar from '@/components/Avatar/Avatar'
 import SwitchDarkMode2 from '@/components/SwitchDarkMode/SwitchDarkMode2'
 import Link from 'next/link'
+import { API_BASE_URL, fetcher } from '@/utils/api'
+import useSWR from 'swr'
+import { CurrentResponse } from '@/controllers/current'
+import { useToken } from '@/hooks/useToken'
 
 export default function AvatarDropdown() {
+  const { token } = useToken()
+	const { data: current } = useSWR<CurrentResponse>(
+		[`${API_BASE_URL}/auth/current`, token],
+		([url, token]: [string, string]) => fetcher(url, token),
+	)
+
 	return (
 		<div className="AvatarDropdown">
 			<Popover className="relative">
@@ -52,15 +62,15 @@ export default function AvatarDropdown() {
 							leaveFrom="opacity-100 translate-y-0"
 							leaveTo="opacity-0 translate-y-1"
 						>
-							<PopoverPanel className="absolute -end-2 z-10 mt-3.5 w-screen max-w-[260px] px-4 sm:end-0 sm:px-0">
+							<PopoverPanel className="absolute -end-2 z-10 mt-3.5 w-screen max-w-[300px] px-4 sm:end-0 sm:px-0">
 								<div className="overflow-hidden rounded-3xl shadow-lg ring-1 ring-black ring-opacity-5">
-									<div className="relative grid grid-cols-1 gap-6 bg-white px-6 py-7 dark:bg-neutral-800">
+									<div className="relative grid grid-cols-1 gap-6 bg-white p-5 dark:bg-neutral-800">
 										<div className="flex items-center">
 											<Avatar imgUrl={avatarImgs[7]} sizeClass="w-12 h-12" />
 
 											<div className="ms-3 flex-grow">
-												<h4 className="font-semibold">Eden Smith</h4>
-												<p className="mt-0.5 text-xs">Los Angeles, CA</p>
+												<h4 className="font-semibold">{current?.name}</h4>
+												<p className="mt-0.5 text-xs">{current?.email}</p>
 											</div>
 										</div>
 
