@@ -14,7 +14,7 @@ export type LoginResponse = {
   isVefified: boolean,
 }
 
-export const handleLogin = async (data: typeof loginScheme) => {
+export const handleLogin = async (data: z.infer<typeof loginScheme>) => {
 	try {
 		const response = await ky
 			.post<LoginResponse>(`${API_BASE_URL}/auth/login`, {

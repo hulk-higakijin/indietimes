@@ -8,7 +8,7 @@ export const signupScheme = z.object({
 	password: z.string().min(6, 'Password must be at least 6 characters long'),
 })
 
-export const handleSignup = async (data: typeof signupScheme) => {
+export const handleSignup = async (data: z.infer<typeof signupScheme>) => {
 	try {
 		const response = await ky
 			.post(`${API_BASE_URL}/auth/register`, {
