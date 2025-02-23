@@ -103,13 +103,13 @@ const SiteHeader = () => {
 					<Popover className="relative">
 						{({ open }) => (
 							<>
-								<PopoverButton
-									className={`z-10 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:border-primary-6000 dark:bg-primary-6000 dark:hover:bg-primary-700 ${
-										open ? 'ring-primary-500 focus:ring-2' : ''
-									}`}
-								>
-									<CogIcon className="h-8 w-8" />
-								</PopoverButton>
+								{/* <PopoverButton */}
+								{/* 	className={`z-10 rounded-xl border border-neutral-200 bg-white p-2.5 shadow-xl hover:bg-neutral-100 focus:outline-none dark:border-primary-6000 dark:bg-primary-6000 dark:hover:bg-primary-700 ${ */}
+								{/* 		open ? 'ring-primary-500 focus:ring-2' : '' */}
+								{/* 	}`} */}
+								{/* > */}
+								{/* 	<CogIcon className="h-8 w-8" /> */}
+								{/* </PopoverButton> */}
 								<Transition
 									as={Fragment}
 									enter="transition ease-out duration-200"

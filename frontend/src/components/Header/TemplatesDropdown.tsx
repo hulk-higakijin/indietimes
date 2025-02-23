@@ -8,7 +8,7 @@ import {
 } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 import { Fragment } from 'react'
-import { MEGAMENU_TEMPLATES } from '@/data/navigation'
+// import { MEGAMENU_TEMPLATES } from '@/data/navigation'
 import { NavItemType } from '@/components/Navigation/NavigationItem'
 import Link from 'next/link'
 import NcImage from '../NcImage/NcImage'
@@ -85,16 +85,16 @@ export default function TemplatesDropdown() {
 									<div className="container">
 										<div className="flex border-t border-slate-200 py-14 text-sm dark:border-slate-700">
 											<div className="grid flex-1 grid-cols-4 gap-6 pr-6 xl:pr-8">
-												{MEGAMENU_TEMPLATES.map((item, index) => (
-													<div key={index}>
-														<p className="font-medium text-slate-900 dark:text-neutral-200">
-															{item.name}
-														</p>
-														<ul className="mt-4 grid space-y-4">
-															{item.children?.map(renderMegaMenuNavlink)}
-														</ul>
-													</div>
-												))}
+												{/* {MEGAMENU_TEMPLATES.map((item, index) => ( */}
+												{/* 	<div key={index}> */}
+												{/* 		<p className="font-medium text-slate-900 dark:text-neutral-200"> */}
+												{/* 			{item.name} */}
+												{/* 		</p> */}
+												{/* 		<ul className="mt-4 grid space-y-4"> */}
+												{/* 			{item.children?.map(renderMegaMenuNavlink)} */}
+												{/* 		</ul> */}
+												{/* 	</div> */}
+												{/* ))} */}
 											</div>
 											<div className="w-[40%]">
 												<div className="grid grid-cols-1 gap-10 sm:gap-8 lg:grid-cols-2">

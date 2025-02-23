@@ -3,9 +3,12 @@ import ky from 'ky'
 import { API_BASE_URL } from '@/utils/api'
 
 export type Article = {
+  id: number;
   title: string,
   summary: string,
   content: string,
+  created_at: string
+  updated_at: string
 }
 
 export const articleScheme = z.object({
@@ -23,7 +26,6 @@ export const articleScheme = z.object({
 })
 
 export const createArticle = async (data: z.infer<typeof articleScheme>) => {
-  console.log('data', data)
 	try {
 		const response = await ky
 			.post<z.infer<typeof articleScheme>>(`${API_BASE_URL}/articles`, {

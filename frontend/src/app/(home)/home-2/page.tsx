@@ -66,11 +66,11 @@ const PageHomeDemo2: React.FC = () => {
 
         <SectionAds className="" />
 
-        <SectionMagazine4
-          className="py-16 lg:py-28"
-          heading="Life styles 🎨 "
-          posts={MAGAZINE2_POSTS}
-        />
+        {/* <SectionMagazine4 */}
+        {/*   className="py-16 lg:py-28" */}
+        {/*   heading="Life styles 🎨 " */}
+        {/*   posts={MAGAZINE2_POSTS} */}
+        {/* /> */}
 
         <div className="relative py-16">
           <BackgroundSection />
