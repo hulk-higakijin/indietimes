@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import Card2 from "@/components/Card2/Card2";
-import { articleDataType } from "@/data/types";
 import Card6 from "@/components/Card6/Card6";
 import HeaderFilter from "./HeaderFilter";
 import { Article } from "@/controllers/article";
