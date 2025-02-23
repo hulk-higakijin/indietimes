@@ -2,6 +2,7 @@
 
 import { useThemeMode } from '@/hooks/useThemeMode'
 import MDEditor, { selectWord } from '@uiw/react-md-editor'
+import Label from '../Label/Label'
 
 const ArticleEditor = ({
 	value,
@@ -13,7 +14,8 @@ const ArticleEditor = ({
   const { isDarkMode }  = useThemeMode()
 
 	return (
-		<div data-color-mode={isDarkMode ? "dark" : "light"} className="w-full py-4">
+		<div data-color-mode={isDarkMode ? "dark" : "light"} className="w-full py-4 flex flex-col gap-2">
+      <Label>Article</Label>
 			<MDEditor
 				value={value}
 				minHeight={500}
