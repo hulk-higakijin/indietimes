@@ -17,7 +17,7 @@ import remarkGfm from 'remark-gfm'
 const demoTags = DEMO_TAGS.filter((_, i) => i < 9)
 
 export interface SingleContentProps {
-  content: string
+  content?: string
 }
 
 const SingleContent: FC<SingleContentProps> = ({content}) => {

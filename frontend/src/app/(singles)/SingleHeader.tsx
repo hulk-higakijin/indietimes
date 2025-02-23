@@ -9,7 +9,7 @@ import { DEMO_CATEGORIES } from '@/data/taxonomies'
 import { Article } from '@/controllers/article'
 
 export interface SingleHeaderProps {
-  article: Article,
+  article?: Article,
 	titleMainClass?: string
 	hiddenDesc?: boolean
 	className?: string
