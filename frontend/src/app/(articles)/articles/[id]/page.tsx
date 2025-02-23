@@ -1,14 +1,19 @@
-import SingleContent from "@/app/(singles)/SingleContent"
-import SingleHeader from "@/app/(singles)/SingleHeader"
-import SingleRelatedPosts from "@/app/(singles)/SingleRelatedPosts"
-import NcImage from "@/components/NcImage/NcImage"
+import SingleContent from '@/app/(singles)/SingleContent'
+import SingleHeader from '@/app/(singles)/SingleHeader'
+import SingleRelatedPosts from '@/app/(singles)/SingleRelatedPosts'
+import NcImage from '@/components/NcImage/NcImage'
+import { Article } from '@/controllers/article'
+import { API_BASE_URL } from '@/utils/api'
+import ky from 'ky'
 
-const ShowArticlePage = () => {
+const ShowArticlePage = async () => {
+	const article = await ky.get<Article>(`${API_BASE_URL}/articles/1`).json()
+
 	return (
 		<div className={`nc-PageSingle pt-8 lg:pt-16`}>
 			<header className="container rounded-xl">
 				<div className="mx-auto max-w-screen-md">
-					<SingleHeader />
+					<SingleHeader article={article} />
 				</div>
 			</header>
 
@@ -23,12 +28,12 @@ const ShowArticlePage = () => {
 				sizes="(max-width: 1024px) 100vw, 1280px"
 			/>
 
-      <div className="container mt-10">
-        <SingleContent />
-      </div>
+			<div className="container mt-10">
+				<SingleContent summary={article.summary} />
+			</div>
 
-      {/* RELATED POSTS */}
-      <SingleRelatedPosts />
+			{/* RELATED POSTS */}
+			<SingleRelatedPosts />
 		</div>
 	)
 }

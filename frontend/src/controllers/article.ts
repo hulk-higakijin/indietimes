@@ -2,6 +2,12 @@ import z from 'zod'
 import ky from 'ky'
 import { API_BASE_URL } from '@/utils/api'
 
+export type Article = {
+  title: string,
+  summary: string,
+  content: string,
+}
+
 export const articleScheme = z.object({
 	title: z
 		.string()

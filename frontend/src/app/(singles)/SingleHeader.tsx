@@ -6,16 +6,18 @@ import SingleTitle from './SingleTitle'
 import PostMeta2 from '@/components/PostMeta2/PostMeta2'
 import SingleMetaAction2 from './SingleMetaAction2'
 import { DEMO_CATEGORIES } from '@/data/taxonomies'
+import { Article } from '@/controllers/article'
 
 export interface SingleHeaderProps {
-	hiddenDesc?: boolean
+  article: Article,
 	titleMainClass?: string
+	hiddenDesc?: boolean
 	className?: string
 }
 
 const SingleHeader: FC<SingleHeaderProps> = ({
+  article,
 	titleMainClass,
-	hiddenDesc = false,
 	className = '',
 }) => {
 	return (
@@ -26,15 +28,10 @@ const SingleHeader: FC<SingleHeaderProps> = ({
 						itemClass="!px-3"
 						categories={[DEMO_CATEGORIES[1]]}
 					/>
-					<SingleTitle
-						mainClass={titleMainClass}
-						title={'Trending web & landing page designs in 2023'}
-					/>
-					{!hiddenDesc && (
+					{article?.title && <SingleTitle mainClass={titleMainClass} title={article.title} />}
+					{article?.summary && (
 						<span className="block pb-1 text-base text-neutral-500 dark:text-neutral-400 md:text-lg">
-							Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-							Perspiciatis tempora obcaecati error ipsum voluptatibus sed
-							adipisci ut maiores nesciunt quam.
+              {article.summary}
 						</span>
 					)}
 					<div className="w-full border-b border-neutral-200 dark:border-neutral-700"></div>
