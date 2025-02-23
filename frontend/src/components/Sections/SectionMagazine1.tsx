@@ -22,14 +22,13 @@ const SectionMagazine1: FC<SectionMagazine1Props> = ({
       {!articles.length && <span>Nothing we found!</span>}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
         {articles[0] && <Card2 size="large" article={articles[0]} />}
-        {/* <div className="grid gap-6 md:gap-8"> */}
-        {/*   {articles */}
-        {/*     .filter((_, i) => i < 4 && i > 0) */}
-        {/*     .map((item, index) => ( */}
-        {/*     // あとで直す */}
-        {/*       // <Card6 key={index} article={item} /> */}
-        {/*     ))} */}
-        {/* </div> */}
+        <div className="grid gap-6 md:gap-8">
+          {articles
+            .filter((_, i) => i < 4 && i > 0)
+            .map((item, index) => (
+              <Card6 key={index} article={item} />
+            ))}
+        </div>
       </div>
     </div>
   );

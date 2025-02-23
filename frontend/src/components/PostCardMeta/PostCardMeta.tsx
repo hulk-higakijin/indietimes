@@ -5,37 +5,34 @@ import Link from "next/link";
 
 export interface PostCardMetaProps {
   className?: string;
-  meta: Pick<PostDataType, "date" | "author">;
   hiddenAvatar?: boolean;
   avatarSize?: string;
 }
 
 const PostCardMeta: FC<PostCardMetaProps> = ({
   className = "leading-none text-xs",
-  meta,
   hiddenAvatar = false,
   avatarSize = "h-7 w-7 text-sm",
 }) => {
-  const { date, author } = meta;
 
   return (
     <div
       className={`nc-PostCardMeta inline-flex items-center flex-wrap text-neutral-800 dark:text-neutral-200 ${className}`}
     >
       <Link
-        href={author.href}
+        href={`/`}
         className="relative flex items-center space-x-2 rtl:space-x-reverse"
       >
         {!hiddenAvatar && (
           <Avatar
             radius="rounded-full"
             sizeClass={avatarSize}
-            imgUrl={author.avatar}
-            userName={author.displayName}
+            imgUrl={'https://pbs.twimg.com/profile_images/1817166485867106304/v-335And_400x400.jpg'}
+            userName={'higakijin'}
           />
         )}
         <span className="block text-neutral-700 hover:text-black dark:text-neutral-300 dark:hover:text-white font-medium">
-          {author.displayName}
+          higakijin
         </span>
       </Link>
       <>
@@ -43,7 +40,7 @@ const PostCardMeta: FC<PostCardMetaProps> = ({
           ·
         </span>
         <span className="text-neutral-500 dark:text-neutral-400 font-normal">
-          {date}
+          2024/12/12
         </span>
       </>
     </div>
