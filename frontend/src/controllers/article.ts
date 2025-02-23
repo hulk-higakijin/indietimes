@@ -7,6 +7,8 @@ export type Article = {
   title: string,
   summary: string,
   content: string,
+  createdAt: string
+  updatedAt: string
 }
 
 export const articleScheme = z.object({
@@ -24,7 +26,6 @@ export const articleScheme = z.object({
 })
 
 export const createArticle = async (data: z.infer<typeof articleScheme>) => {
-  console.log('data', data)
 	try {
 		const response = await ky
 			.post<z.infer<typeof articleScheme>>(`${API_BASE_URL}/articles`, {

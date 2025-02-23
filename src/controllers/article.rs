@@ -33,7 +33,7 @@ async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
 
 #[debug_handler]
 pub async fn list(State(ctx): State<AppContext>) -> Result<Response> {
-    format::json(Entity::find().all(&ctx.db).await?)
+    format::json(Model::order_by_recent(&ctx.db).await?)
 }
 
 #[debug_handler]
