@@ -18,11 +18,11 @@ pub struct Params {
 }
 
 impl Params {
-    fn update(&self, item: &mut ActiveModel, user_id: &i32) {
+    fn update(&self, item: &mut ActiveModel, user_id: i32) {
         item.title = Set(self.title.clone());
         item.content = Set(self.content.clone());
         item.summary = Set(self.summary.clone());
-        item.user_id = Set(*user_id);
+        item.user_id = Set(user_id);
     }
 }
 
@@ -47,7 +47,7 @@ pub async fn add(
     };
     let user = users::Model::find_by_pid(&ctx.db, &auth.claims.pid).await?;
 
-    params.update(&mut item, &user.id);
+    params.update(&mut item, user.id);
     let item = item.insert(&ctx.db).await?;
     format::json(item)
 }
@@ -62,7 +62,7 @@ pub async fn update(
     let item = load_item(&ctx, id).await?;
     let mut item = item.into_active_model();
     let user = users::Model::find_by_pid(&ctx.db, &auth.claims.pid).await?;
-    params.update(&mut item, &user.id);
+    params.update(&mut item, user.id);
     let item = item.update(&ctx.db).await?;
     format::json(item)
 }
