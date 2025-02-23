@@ -15,6 +15,8 @@ const SectionMagazine1: FC<SectionMagazine1Props> = ({
   heading = "New Indie Times 🎈 ",
   className = "",
 }) => {
+  console.log(articles)
+
   return (
     <div className={`nc-SectionMagazine1 ${className}`}>
       <HeaderFilter heading={heading} />

@@ -7,8 +7,8 @@ export type Article = {
   title: string,
   summary: string,
   content: string,
-  createdAt: string
-  updatedAt: string
+  created_at: string
+  updated_at: string
 }
 
 export const articleScheme = z.object({

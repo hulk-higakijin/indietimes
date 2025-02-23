@@ -20,9 +20,8 @@ const Card2: FC<Card2Props> = ({
 	size = 'normal',
 	article,
 }) => {
-	const { id, title, content, summary } = article
-
-	console.log('id', id)
+	const { id, title, content, summary, created_at } = article
+  console.log(created_at)
 
 	return (
 		<div className={`nc-Card2 group relative flex flex-col ${className}`}>
@@ -54,6 +53,7 @@ const Card2: FC<Card2Props> = ({
 			<div className="mt-5 flex flex-col px-4">
 				<div className="space-y-3">
 					<PostCardMeta
+            created_at={created_at}  
 						className="relative text-sm"
 						avatarSize="h-8 w-8 text-sm"
 					/>
@@ -71,8 +71,8 @@ const Card2: FC<Card2Props> = ({
 							{title}
 						</Link>
 					</h2>
-					<span className="block text-[15px] leading-6 text-neutral-500 dark:text-neutral-400">
-            {summary}{content}
+					<span className="block text-[15px] leading-6 text-neutral-500 dark:text-neutral-400 line-clamp-3">
+            {summary}
 					</span>
 				</div>
 				<div className="my-5 border-t border-neutral-200 dark:border-neutral-700"></div>
