@@ -1,19 +1,27 @@
 'use client'
 
-import Editor from 'react-simple-wysiwyg'
+import { useThemeMode } from '@/hooks/useThemeMode'
+import MDEditor, { selectWord } from '@uiw/react-md-editor'
 
 const ArticleEditor = ({
-	html,
-	setHtml,
+	value,
+	setValue,
 }: {
-	html: string
-	setHtml: (value: string) => void
+	value: string
+	setValue: (value: string) => void
 }) => {
-	const onChange = (e: any) => {
-		setHtml(e.target.value)
-	}
+  const { isDarkMode }  = useThemeMode()
 
-	return <Editor value={html} onChange={onChange} />
+	return (
+		<div data-color-mode={isDarkMode ? "dark" : "light"} className="w-full py-4">
+			<MDEditor
+				value={value}
+				minHeight={500}
+				onChange={(e) => setValue(e || '')}
+        height={1000}
+			/>
+		</div>
+	)
 }
 
 export default ArticleEditor

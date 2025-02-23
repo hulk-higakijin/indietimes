@@ -5,11 +5,11 @@ import ArticleEditor from '../ArticleEditor/ArticleEditor'
 import ArticlePreview from '../ArticlePreview/ArticlePreview'
 
 const ArticleForm = () => {
-	const [html, setHtml] = useState('')
+  const [value, setValue] = useState("");
+
 	return (
 		<div className="flex gap-2">
-			<ArticleEditor html={html} setHtml={setHtml} />
-      <ArticlePreview html={html} />
+			<ArticleEditor value={value} setValue={setValue} />
 		</div>
 	)
 }
