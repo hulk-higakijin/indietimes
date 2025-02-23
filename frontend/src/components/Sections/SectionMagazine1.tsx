@@ -12,7 +12,7 @@ export interface SectionMagazine1Props {
 
 const SectionMagazine1: FC<SectionMagazine1Props> = ({
   posts,
-  heading = "Latest Articles 🎈 ",
+  heading = "New Indie Times 🎈 ",
   className = "",
 }) => {
   return (
