@@ -1,5 +1,5 @@
+use super::_entities::articles;
 pub use super::_entities::articles::{ActiveModel, Entity, Model};
-use super::{_entities::articles, users};
 use sea_orm::{entity::prelude::*, QueryOrder};
 pub type Articles = Entity;
 
@@ -21,6 +21,11 @@ impl ActiveModelBehavior for ActiveModel {
 
 // implement your read-oriented logic here
 impl Model {
+    /// orders articles by the most recent first
+    ///
+    /// # Errors
+    ///
+    /// When there is a database query error or no articles are found
     pub async fn order_by_recent(db: &DatabaseConnection) -> Result<Vec<Self>, DbErr> {
         articles::Entity::find()
             .order_by_desc(articles::Column::CreatedAt)
