@@ -5,9 +5,15 @@ import NcImage from '@/components/NcImage/NcImage'
 import { Article } from '@/controllers/article'
 import { API_BASE_URL } from '@/utils/api'
 import ky from 'ky'
+import { useParams, useRouter } from 'next/navigation'
 
-const ShowArticlePage = async () => {
-	const article = await ky.get<Article>(`${API_BASE_URL}/articles/5`).json()
+const ShowArticlePage = async ({
+  params,
+}: {
+    params: Promise<{ id: string }>
+}) => {
+  const articleId = (await params).id
+	const article = await ky.get<Article>(`${API_BASE_URL}/articles/${articleId}`).json()
 
 	return (
 		<div className={`nc-PageSingle pt-8 lg:pt-16`}>
