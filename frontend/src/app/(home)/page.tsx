@@ -24,13 +24,17 @@ import SectionSubscribe2 from "@/components/SectionSubscribe2/SectionSubscribe2"
 import SectionVideos from "@/components/Sections/SectionVideos";
 import SectionLatestPosts from "@/components/Sections/SectionLatestPosts";
 import SectionMagazine2 from "@/components/Sections/SectionMagazine2";
+import ky from "ky";
+import { Article } from "@/controllers/article";
+import { API_BASE_URL } from "@/utils/api";
 
 //
-const MAGAZINE1_POSTS = DEMO_POSTS.filter((_, i) => i >= 8 && i < 16);
 const MAGAZINE2_POSTS = DEMO_POSTS.filter((_, i) => i >= 0 && i < 7);
 //
 
-const PageHome = ({}) => {
+const PageHome = async ({}) => {
+  const articles = await ky.get<Article[]>(`${API_BASE_URL}/articles`).json()
+
   return (
     <div className="nc-PageHome relative">
       <div className="container relative">
@@ -66,7 +70,7 @@ const PageHome = ({}) => {
         {/*   /> */}
         {/* </div> */}
 
-        <SectionMagazine1 className="py-16 lg:py-28" posts={MAGAZINE1_POSTS} />
+        <SectionMagazine1 className="py-16 lg:py-28" articles={articles} />
 
         {/* <SectionAds /> */}
 

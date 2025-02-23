@@ -3,6 +3,7 @@ import ky from 'ky'
 import { API_BASE_URL } from '@/utils/api'
 
 export type Article = {
+  id: number;
   title: string,
   summary: string,
   content: string,
