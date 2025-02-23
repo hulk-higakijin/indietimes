@@ -36,6 +36,7 @@ server:
       enable: true
       allow_origins:
         - http://localhost:3000
+        - https://indietimes.vercel.app
 
 # Worker Configuration
 workers:
