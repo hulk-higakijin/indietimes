@@ -11,16 +11,15 @@ export type Article = {
 export const articleScheme = z.object({
 	title: z
 		.string()
-		.min(6, 'Title must be at least 6 characters long')
+		.min(1, 'Title must be at least 1 characters long')
 		.max(100, 'Title must be at most 100 characters long'),
 	summary: z
 		.string()
-		.min(6, 'Summary must be at least 6 characters long')
+		.min(1, 'Summary must be at least 1 characters long')
 		.max(100, 'Summary must be at most 100 characters long'),
 	content: z
 		.string()
-		.min(6, 'Content must be at least 6 characters long')
-		.max(10000, 'Content must be at most 10000 characters long'),
+		.min(1, 'Content must be at least 1 characters long')
 })
 
 export const createArticle = async (data: z.infer<typeof articleScheme>) => {

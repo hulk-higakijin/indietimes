@@ -7,7 +7,7 @@ import { API_BASE_URL } from '@/utils/api'
 import ky from 'ky'
 
 const ShowArticlePage = async () => {
-	const article = await ky.get<Article>(`${API_BASE_URL}/articles/1`).json()
+	const article = await ky.get<Article>(`${API_BASE_URL}/articles/5`).json()
 
 	return (
 		<div className={`nc-PageSingle pt-8 lg:pt-16`}>
@@ -18,18 +18,18 @@ const ShowArticlePage = async () => {
 			</header>
 
 			{/* FEATURED IMAGE */}
-			<NcImage
-				alt="single"
-				containerClassName="container my-10 sm:my-12"
-				className="w-full rounded-xl"
-				src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg"
-				width={1260}
-				height={750}
-				sizes="(max-width: 1024px) 100vw, 1280px"
-			/>
+			{/* <NcImage */}
+			{/* 	alt="single" */}
+			{/* 	containerClassName="container my-10 sm:my-12" */}
+			{/* 	className="w-full rounded-xl" */}
+			{/* 	src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg" */}
+			{/* 	width={1260} */}
+			{/* 	height={750} */}
+			{/* 	sizes="(max-width: 1024px) 100vw, 1280px" */}
+			{/* /> */}
 
 			<div className="container mt-10">
-				<SingleContent summary={article.summary} />
+				<SingleContent content={article.content} />
 			</div>
 
 			{/* RELATED POSTS */}
