@@ -34,7 +34,6 @@ const MAGAZINE2_POSTS = DEMO_POSTS.filter((_, i) => i >= 0 && i < 7);
 
 const PageHome = async ({}) => {
   const articles = await ky.get<Article[]>(`${API_BASE_URL}/articles`).json()
-  console.log(articles.map(a => a.id))
 
   return (
     <div className="nc-PageHome relative">
