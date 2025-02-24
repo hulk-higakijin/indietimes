@@ -12,6 +12,7 @@ export interface PostMeta2Props {
   hiddenCategories?: boolean;
   size?: "large" | "normal";
   avatarRounded?: string;
+  authorName?: string;
 }
 
 const PostMeta2: FC<PostMeta2Props> = ({
@@ -20,6 +21,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
   hiddenCategories = false,
   size = "normal",
   avatarRounded,
+  authorName
 }) => {
   const { date, author, categories, readingTime } = meta;
   return (
@@ -40,13 +42,13 @@ const PostMeta2: FC<PostMeta2Props> = ({
               : "h-10 w-10 sm:h-11 sm:w-11 text-xl"
           }
           imgUrl={author.avatar}
-          userName={author.displayName}
+          userName={authorName}
         />
       </Link>
       <div className="ms-3">
         <div className="flex items-center">
           <Link href={author.href} className="block font-semibold">
-            {author.displayName}
+            {authorName}
           </Link>
 
           {!hiddenCategories && (

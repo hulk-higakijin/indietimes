@@ -8,6 +8,7 @@ pub struct ArticleResponse {
     pub summary: String,
     pub author_name: String,
     pub author_image: String,
+    pub user_id: i32,
     pub created_at: chrono::DateTime<chrono::FixedOffset>,
     pub updated_at: chrono::DateTime<chrono::FixedOffset>,
 }
@@ -25,6 +26,7 @@ impl ArticleResponse {
             summary: article.summary.clone(),
             author_name,
             author_image,
+            user_id: article.user_id,
             created_at: article.created_at,
             updated_at: article.updated_at,
         }
