@@ -5,9 +5,12 @@ use axum::debug_handler;
 use loco_rs::prelude::*;
 use serde::{Deserialize, Serialize};
 
-use crate::models::{
-    _entities::articles::{ActiveModel, Entity, Model},
-    users,
+use crate::{
+    models::{
+        _entities::articles::{ActiveModel, Entity, Model},
+        users,
+    },
+    views::article::ArticleResponse,
 };
 
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -33,7 +36,12 @@ async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
 
 #[debug_handler]
 pub async fn list(State(ctx): State<AppContext>) -> Result<Response> {
-    format::json(Model::order_by_recent(&ctx.db).await?)
+    let articles = Model::order_by_recent(&ctx.db).await?;
+    let articles_response: Vec<ArticleResponse> = articles
+        .into_iter()
+        .map(|article| ArticleResponse::new(&article))
+        .collect();
+    format::json(articles_response)
 }
 
 #[debug_handler]
@@ -75,7 +83,8 @@ pub async fn remove(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Resul
 
 #[debug_handler]
 pub async fn get_one(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Result<Response> {
-    format::json(load_item(&ctx, id).await?)
+    let article = load_item(&ctx, id).await?;
+    format::json(ArticleResponse::new(&article))
 }
 
 pub fn routes() -> Routes {

@@ -13,12 +13,16 @@ export interface SingleHeaderProps {
 	titleMainClass?: string
 	hiddenDesc?: boolean
 	className?: string
+  authorName?: string
+  create_at?: string
 }
 
 const SingleHeader: FC<SingleHeaderProps> = ({
   article,
 	titleMainClass,
 	className = '',
+  authorName,
+  create_at
 }) => {
 	return (
 		<>
@@ -41,6 +45,8 @@ const SingleHeader: FC<SingleHeaderProps> = ({
 							className="flex-shrink-0 leading-none"
 							hiddenCategories
 							avatarRounded="rounded-full shadow-inner"
+              authorName={authorName}
+              created_at={create_at}
 						/>
 						<SingleMetaAction2 />
 					</div>
