@@ -9,21 +9,29 @@ import ky from 'ky'
 import { useParams, useRouter } from 'next/navigation'
 
 const ShowArticlePage = async ({
-  params,
+	params,
 }: {
-    params: Promise<{ id: string }>
+	params: Promise<{ id: string }>
 }) => {
-  const articleId = (await params).id
-	const article = await ky.get<Article>(`${API_BASE_URL}/articles/${articleId}`).json()
-  const author = await ky.get<User>(`${API_BASE_URL}/users/${article.user_id}`).json()
+	const articleId = (await params).id
+	const article = await ky
+		.get<Article>(`${API_BASE_URL}/articles/${articleId}`)
+		.json()
+	const author = await ky
+		.get<User>(`${API_BASE_URL}/users/${article.user_id}`)
+		.json()
 
-  console.log(author)
+	console.log(author)
 
 	return (
 		<div className={`nc-PageSingle pt-8 lg:pt-16`}>
 			<header className="container rounded-xl">
 				<div className="mx-auto max-w-screen-md">
-					<SingleHeader article={article} authorName={author.name} />
+					<SingleHeader
+						article={article}
+						authorName={author.name}
+						create_at={article.created_at}
+					/>
 				</div>
 			</header>
 
