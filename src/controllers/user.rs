@@ -1,9 +1,12 @@
 #![allow(clippy::missing_errors_doc)]
 #![allow(clippy::unnecessary_struct_initialization)]
 #![allow(clippy::unused_async)]
-use loco_rs::prelude::*;
+use crate::{
+    models::users::{users, Model},
+    views::user::UserResponse,
+};
 use axum::debug_handler;
-use crate::{models::users::{users, Model}, views::user::UserResponse};
+use loco_rs::prelude::*;
 
 async fn load_item(ctx: &AppContext, id: i32) -> Result<Model> {
     let user = users::Entity::find_by_id(id).one(&ctx.db).await?;
