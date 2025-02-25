@@ -18,6 +18,7 @@ pub struct Params {
     pub title: String,
     pub content: String,
     pub summary: String,
+    pub thumbnail_url: Option<String>,
 }
 
 impl Params {
@@ -25,6 +26,7 @@ impl Params {
         item.title = Set(self.title.clone());
         item.content = Set(self.content.clone());
         item.summary = Set(self.summary.clone());
+        item.thumbnail_url = Set(self.thumbnail_url.clone());
         item.user_id = Set(user_id);
     }
 }

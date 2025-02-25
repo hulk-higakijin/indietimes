@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostCardMeta from '../PostCardMeta/PostCardMeta'
 import { Article } from '@/controllers/article'
+import { NO_IMAGE_AVAILABLE } from '@/utils/photo'
 
 export interface Card2Props {
 	className?: string
@@ -20,8 +21,8 @@ const Card2: FC<Card2Props> = ({
 	size = 'normal',
 	article,
 }) => {
-	const { id, title, content, summary, created_at } = article
-  console.log(created_at)
+	const { id, title, content, summary, created_at, thumbnail_url } = article
+	console.log(created_at)
 
 	return (
 		<div className={`nc-Card2 group relative flex flex-col ${className}`}>
@@ -31,7 +32,7 @@ const Card2: FC<Card2Props> = ({
 					sizes="(max-width: 600px) 480px, 800px"
 					className="rounded-3xl object-cover"
 					src={
-						'https://pbs.twimg.com/media/GkbyfKHXkAAMfIK?format=jpg&name=large'
+						thumbnail_url || NO_IMAGE_AVAILABLE
 					}
 					alt={title}
 				/>
@@ -53,7 +54,7 @@ const Card2: FC<Card2Props> = ({
 			<div className="mt-5 flex flex-col px-4">
 				<div className="space-y-3">
 					<PostCardMeta
-            created_at={created_at}  
+						created_at={created_at}
 						className="relative text-sm"
 						avatarSize="h-8 w-8 text-sm"
 					/>
@@ -71,13 +72,12 @@ const Card2: FC<Card2Props> = ({
 							{title}
 						</Link>
 					</h2>
-					<span className="block text-[15px] leading-6 text-neutral-500 dark:text-neutral-400 line-clamp-3">
-            {summary}
+					<span className="line-clamp-3 block text-[15px] leading-6 text-neutral-500 dark:text-neutral-400">
+						{summary}
 					</span>
 				</div>
 				<div className="my-5 border-t border-neutral-200 dark:border-neutral-700"></div>
-				<div className="flex items-center justify-between">
-				</div>
+				<div className="flex items-center justify-between"></div>
 			</div>
 		</div>
 	)

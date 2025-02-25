@@ -21,8 +21,6 @@ const ShowArticlePage = async ({
 		.get<User>(`${API_BASE_URL}/users/${article.user_id}`)
 		.json()
 
-	console.log(author)
-
 	return (
 		<div className={`nc-PageSingle pt-8 lg:pt-16`}>
 			<header className="container rounded-xl">
@@ -36,15 +34,17 @@ const ShowArticlePage = async ({
 			</header>
 
 			{/* FEATURED IMAGE */}
-			{/* <NcImage */}
-			{/* 	alt="single" */}
-			{/* 	containerClassName="container my-10 sm:my-12" */}
-			{/* 	className="w-full rounded-xl" */}
-			{/* 	src="https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg" */}
-			{/* 	width={1260} */}
-			{/* 	height={750} */}
-			{/* 	sizes="(max-width: 1024px) 100vw, 1280px" */}
-			{/* /> */}
+			{article.thumbnail_url && (
+					<NcImage
+						alt="single"
+						containerClassName="container my-10 sm:my-12 max-w-6xl"
+						className="w-full rounded-xl"
+						src={article.thumbnail_url}
+						width={1260}
+						height={750}
+						sizes="(max-width: 800px) 100vw, 800px"
+					/>
+			)}
 
 			<div className="container mt-10">
 				<SingleContent content={article.content} />

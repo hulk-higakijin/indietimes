@@ -8,6 +8,7 @@ import PostTypeFeaturedIcon from '@/components/PostTypeFeaturedIcon/PostTypeFeat
 import Link from 'next/link'
 import Image from 'next/image'
 import { Article } from '@/controllers/article'
+import { NO_IMAGE_AVAILABLE } from '@/utils/photo'
 
 export interface Card6Props {
 	className?: string
@@ -15,7 +16,7 @@ export interface Card6Props {
 }
 
 const Card6: FC<Card6Props> = ({ className = 'h-full', article }) => {
-	const { id, title, content, summary } = article
+	const { id, title, content, summary, thumbnail_url } = article
 
 	return (
 		<div
@@ -51,7 +52,7 @@ const Card6: FC<Card6Props> = ({ className = 'h-full', article }) => {
 					className="h-full w-full object-cover"
 					fill
 					src={
-						'https://pbs.twimg.com/media/GkbyfKHXkAAMfIK?format=jpg&name=large'
+						thumbnail_url || NO_IMAGE_AVAILABLE
 					}
 					alt={title}
 				/>
