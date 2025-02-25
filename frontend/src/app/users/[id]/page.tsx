@@ -115,7 +115,7 @@ const PageAuthor = async ({ params }: { params: Promise<{ id: string }> }) => {
 								{/* /> */}
 							</div>
 
-							<AccountActionDropdown containerClassName="h-10 w-10 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700" />
+							{/* <AccountActionDropdown containerClassName="h-10 w-10 bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700" /> */}
 						</div>
 					</div>
 				</div>

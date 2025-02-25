@@ -17,14 +17,11 @@ import { CurrentResponse } from '@/controllers/current'
 import { useToken } from '@/hooks/useToken'
 
 export default function AvatarDropdown() {
-  const { token } = useToken()
+	const { token } = useToken()
 	const { data: current } = useSWR<CurrentResponse>(
 		[`${API_BASE_URL}/auth/current`, token],
 		([url, token]: [string, string]) => fetcher(url, token),
 	)
-
-
-  console.log('current', current)
 
 	return (
 		<div className="AvatarDropdown">
