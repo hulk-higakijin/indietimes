@@ -15,7 +15,7 @@ export interface Card6Props {
 }
 
 const Card6: FC<Card6Props> = ({ className = 'h-full', article }) => {
-	const { id, title, content, summary } = article
+	const { id, title, content, summary, thumbnail_url } = article
 
 	return (
 		<div
@@ -51,7 +51,7 @@ const Card6: FC<Card6Props> = ({ className = 'h-full', article }) => {
 					className="h-full w-full object-cover"
 					fill
 					src={
-						'https://pbs.twimg.com/media/GkbyfKHXkAAMfIK?format=jpg&name=large'
+						thumbnail_url || 'https://pbs.twimg.com/media/GkbyfKHXkAAMfIK?format=jpg&name=large'
 					}
 					alt={title}
 				/>
