@@ -33,8 +33,14 @@ impl Model {
             .await
     }
 
-    pub async fn find_by_user_id(db: &DatabaseConnection, user_id: i32) -> Result<Vec<Self>, DbErr> {
-        articles::Entity::find().filter(articles::Column::UserId.eq(user_id)).all(db).await
+    pub async fn find_by_user_id(
+        db: &DatabaseConnection,
+        user_id: i32,
+    ) -> Result<Vec<Self>, DbErr> {
+        articles::Entity::find()
+            .filter(articles::Column::UserId.eq(user_id))
+            .all(db)
+            .await
     }
 }
 

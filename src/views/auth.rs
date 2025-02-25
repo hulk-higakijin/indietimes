@@ -28,7 +28,7 @@ pub struct CurrentResponse {
     pub name: String,
     pub email: String,
     pub user_id: i32,
-}    
+}
 
 impl CurrentResponse {
     #[must_use]

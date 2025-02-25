@@ -26,8 +26,9 @@ import Image from 'next/image'
 import ky from 'ky'
 import { User } from '@/controllers/user'
 import { API_BASE_URL } from '@/utils/api'
+import { Article } from '@/controllers/article'
 
-const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 12)
+// const posts: PostDataType[] = DEMO_POSTS.filter((_, i) => i < 12)
 const FILTERS = [
 	{ name: 'Most Recent' },
 	{ name: 'Curated by Admin' },
@@ -40,6 +41,8 @@ const TABS = ['Articles', 'Favorites', 'Saved']
 const PageAuthor = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const id = (await params).id
 	const user = await ky.get<User>(`${API_BASE_URL}/users/${id}`).json()
+  const articles = await ky.get<Article[]>(`${API_BASE_URL}/users/${id}/articles`).json()
+  console.log(articles)
 
 	return (
 		<div className={`nc-PageAuthor`}>
@@ -145,16 +148,16 @@ const PageAuthor = async ({ params }: { params: Promise<{ id: string }> }) => {
 
 					{/* LOOP ITEMS */}
 					<div className="mt-8 grid gap-6 sm:grid-cols-2 md:gap-8 lg:mt-10 lg:grid-cols-3 xl:grid-cols-4">
-						{posts.map((post) => (
-							<Card11 key={post.id} post={post} />
+						{articles.map((article) => (
+							<Card11 key={article.id} article={article} />
 						))}
 					</div>
 
 					{/* PAGINATION */}
-					<div className="mt-12 flex flex-col space-y-5 sm:flex-row sm:items-center sm:justify-between sm:space-x-3 sm:space-y-0 lg:mt-16">
-						<Pagination />
-						<ButtonPrimary>Show me more</ButtonPrimary>
-					</div>
+					{/* <div className="mt-12 flex flex-col space-y-5 sm:flex-row sm:items-center sm:justify-between sm:space-x-3 sm:space-y-0 lg:mt-16"> */}
+					{/* 	<Pagination /> */}
+					{/* 	<ButtonPrimary>Show me more</ButtonPrimary> */}
+					{/* </div> */}
 				</main>
 
 				{/* === SECTION 5 === */}
