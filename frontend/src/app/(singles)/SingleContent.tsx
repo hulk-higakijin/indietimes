@@ -78,7 +78,7 @@ const SingleContent: FC<SingleContentProps> = ({content}) => {
 				{/* ENTRY CONTENT */}
 				<div
 					id="single-entry-content"
-					className="prose prose-h1:text-3xl prose-h1:my-4 lg:prose mx-auto !max-w-screen-md dark:prose-invert"
+					className="prose prose-h1:text-3xl prose-h1:my-6 lg:prose mx-auto !max-w-screen-md dark:prose-invert"
 					ref={contentRef}
 				>
           <Makrdown remarkPlugins={[remarkGfm]}>{content}</Makrdown>
