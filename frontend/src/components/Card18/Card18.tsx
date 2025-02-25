@@ -48,7 +48,7 @@ const Card18: FC<Card18Props> = ({
       <div className={`flex items-start relative w-full ${ratio}`}></div>
       {postType === "audio" ? (
         <div className="absolute inset-0">
-          <PostFeaturedMedia post={post} />
+          {/* <PostFeaturedMedia post={post} /> */}
         </div>
       ) : (
         <Link href={href}>
