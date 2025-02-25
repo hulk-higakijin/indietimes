@@ -29,13 +29,13 @@ pub async fn get_one(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Resu
 }
 
 pub async fn get_articles(Path(id): Path<i32>, State(ctx): State<AppContext>) -> Result<Response> {
-    let items = articles::Entity::find()
+    let articles = articles::Entity::find()
         .filter(articles::Column::UserId.eq(id))
         .order_by_desc(articles::Column::CreatedAt)
         .all(&ctx.db)
         .await?;
 
-    format::json(items)
+    format::json(articles)
 }
 
 pub fn routes() -> Routes {
