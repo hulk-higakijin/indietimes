@@ -23,6 +23,9 @@ export default function AvatarDropdown() {
 		([url, token]: [string, string]) => fetcher(url, token),
 	)
 
+
+  console.log('current', current)
+
 	return (
 		<div className="AvatarDropdown">
 			<Popover className="relative">
@@ -78,7 +81,7 @@ export default function AvatarDropdown() {
 
 										{/* ------------------ 1 --------------------- */}
 										<Link
-											href={'/author/demo-slug'}
+											href={`/users/${current?.user_id}`}
 											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
 											onClick={() => close()}
 										>
