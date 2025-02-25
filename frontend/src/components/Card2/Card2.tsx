@@ -8,6 +8,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import PostCardMeta from '../PostCardMeta/PostCardMeta'
 import { Article } from '@/controllers/article'
+import { NO_IMAGE_AVAILABLE } from '@/utils/photo'
 
 export interface Card2Props {
 	className?: string
@@ -31,8 +32,7 @@ const Card2: FC<Card2Props> = ({
 					sizes="(max-width: 600px) 480px, 800px"
 					className="rounded-3xl object-cover"
 					src={
-						thumbnail_url ||
-						'https://pbs.twimg.com/media/GkbyfKHXkAAMfIK?format=jpg&name=large'
+						thumbnail_url || NO_IMAGE_AVAILABLE
 					}
 					alt={title}
 				/>
