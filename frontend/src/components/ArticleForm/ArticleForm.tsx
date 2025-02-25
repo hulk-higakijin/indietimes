@@ -13,7 +13,8 @@ import Input from '../Input/Input'
 const ArticleForm = () => {
 	const [title, setTitle] = useState('')
 	const [summary, setSummary] = useState('')
-	const [content, setContent] = useState('create super future')
+  const [thumbnail_url, setThumbnailUrl] = useState('')
+	const [content, setContent] = useState('')
 	const { isDarkMode } = useThemeMode()
 	const {
 		register,
@@ -46,6 +47,16 @@ const ArticleForm = () => {
 					value={summary}
 					onChange={(e) => setSummary(e.target.value)}
 					placeholder="Summary"
+					className="w-full rounded-md"
+				/>
+			</div>
+			<div className="flex flex-col gap-2">
+				<Label>Thumbnail Url</Label>
+				<Input
+          {...register('thumbnail_url')}
+					value={thumbnail_url}
+					onChange={(e) => setThumbnailUrl(e.target.value)}
+					placeholder="https://example.com/hello.png"
 					className="w-full rounded-md"
 				/>
 			</div>
