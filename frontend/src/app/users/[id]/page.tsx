@@ -161,25 +161,25 @@ const PageAuthor = async ({ params }: { params: Promise<{ id: string }> }) => {
 				</main>
 
 				{/* === SECTION 5 === */}
-				<div className="relative py-16">
-					<BackgroundSection />
-					<SectionGridCategoryBox
-						categories={DEMO_CATEGORIES.filter((_, i) => i < 10)}
-					/>
-					<div className="mx-auto mt-10 text-center md:mt-16">
-						<ButtonSecondary>Show me more</ButtonSecondary>
-					</div>
-				</div>
+				{/* <div className="relative py-16"> */}
+				{/* 	<BackgroundSection /> */}
+				{/* 	<SectionGridCategoryBox */}
+				{/* 		categories={DEMO_CATEGORIES.filter((_, i) => i < 10)} */}
+				{/* 	/> */}
+				{/* 	<div className="mx-auto mt-10 text-center md:mt-16"> */}
+				{/* 		<ButtonSecondary>Show me more</ButtonSecondary> */}
+				{/* 	</div> */}
+				{/* </div> */}
 
 				{/* === SECTION 5 === */}
-				<SectionSliderNewAuthors
-					heading="Top elite authors"
-					subHeading="Discover our elite writers"
-					authors={DEMO_AUTHORS.filter((_, i) => i < 10)}
-				/>
+				{/* <SectionSliderNewAuthors */}
+				{/* 	heading="Top elite authors" */}
+				{/* 	subHeading="Discover our elite writers" */}
+				{/* 	authors={DEMO_AUTHORS.filter((_, i) => i < 10)} */}
+				{/* /> */}
 
 				{/* SUBCRIBES */}
-				<SectionSubscribe2 />
+				{/* <SectionSubscribe2 /> */}
 			</div>
 		</div>
 	)
