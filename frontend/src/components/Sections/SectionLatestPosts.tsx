@@ -57,8 +57,8 @@ const SectionLatestPosts: FC<SectionLatestPostsProps> = ({
         return <Card9 key={index} post={post} />;
       case "card10":
         return <Card10 key={index} post={post} />;
-      case "card11":
-        return <Card11 key={index} post={post} />;
+      // case "card11":
+      //   return <Card11 key={index} post={post} />;
       case "card14":
         return <Card14 key={index} post={post} />;
       default:

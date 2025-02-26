@@ -32,6 +32,21 @@ impl Model {
             .all(db)
             .await
     }
+
+    /// finds articles by user ID and orders them by the most recent first.
+    ///
+    /// # Errors
+    ///
+    /// Returns a `DbErr` if there is a database query error or if no articles are found.
+    pub async fn find_by_user_id(
+        db: &DatabaseConnection,
+        user_id: i32,
+    ) -> Result<Vec<Self>, DbErr> {
+        articles::Entity::find()
+            .filter(articles::Column::UserId.eq(user_id))
+            .all(db)
+            .await
+    }
 }
 
 // implement your write-oriented logic here

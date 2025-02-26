@@ -8,22 +8,22 @@ import PostCardLikeAndComment from '@/components/PostCardLikeAndComment/PostCard
 import PostCardMeta from '@/components/PostCardMeta/PostCardMeta'
 import PostFeaturedMedia from '@/components/PostFeaturedMedia/PostFeaturedMedia'
 import Link from 'next/link'
+import { Article } from '@/controllers/article'
+import { format } from 'date-fns'
 
 export interface Card11Props {
 	className?: string
-	post: PostDataType
+  article: Article,
 	ratio?: string
 	hiddenAuthor?: boolean
 }
 
 const Card11: FC<Card11Props> = ({
 	className = 'h-full',
-	post,
+  article,
 	hiddenAuthor = false,
 	ratio = 'aspect-w-4 aspect-h-3',
 }) => {
-	const { title, href, categories, date } = post
-
 	const [isHover, setIsHover] = useState(false)
 
 	return (
@@ -37,23 +37,23 @@ const Card11: FC<Card11Props> = ({
 				className={`relative z-10 block w-full flex-shrink-0 overflow-hidden rounded-t-3xl ${ratio}`}
 			>
 				<div>
-					<PostFeaturedMedia post={post} isHover={isHover} />
+					<PostFeaturedMedia article={article} isHover={isHover} />
 				</div>
 			</div>
-			<Link href={href} className="absolute inset-0"></Link>
+			<Link href={`/articles/${article.id}`} className="absolute inset-0"></Link>
 			<span className="absolute inset-x-3 top-3 z-10">
-				<CategoryBadgeList categories={categories} />
+				{/* <CategoryBadgeList categories={categories} /> */}
 			</span>
 
 			<div className="flex flex-col space-y-3 p-4">
 				{!hiddenAuthor ? (
 					<>{/* <PostCardMeta meta={post} /> */}</>
 				) : (
-					<span className="text-xs text-neutral-500">{date}</span>
+					<span className="text-xs text-neutral-500">{format(article.created_at, 'MMMM dd, yyyy')}</span>
 				)}
 				<h3 className="nc-card-title block text-base font-semibold text-neutral-900 dark:text-neutral-100">
-					<span className="line-clamp-2" title={title}>
-						{title}
+					<span className="line-clamp-2" title={article.title}>
+            {article.title}
 					</span>
 				</h3>
 				<div className="mt-auto flex items-end justify-between">

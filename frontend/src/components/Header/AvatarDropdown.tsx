@@ -17,7 +17,7 @@ import { CurrentResponse } from '@/controllers/current'
 import { useToken } from '@/hooks/useToken'
 
 export default function AvatarDropdown() {
-  const { token } = useToken()
+	const { token } = useToken()
 	const { data: current } = useSWR<CurrentResponse>(
 		[`${API_BASE_URL}/auth/current`, token],
 		([url, token]: [string, string]) => fetcher(url, token),
@@ -78,7 +78,7 @@ export default function AvatarDropdown() {
 
 										{/* ------------------ 1 --------------------- */}
 										<Link
-											href={'/author/demo-slug'}
+											href={`/users/${current?.user_id}`}
 											className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-neutral-100 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50 dark:hover:bg-neutral-700"
 											onClick={() => close()}
 										>
