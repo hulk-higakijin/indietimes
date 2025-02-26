@@ -46,12 +46,12 @@ const ShowArticlePage = async ({
 					/>
 			)}
 
-			<div className="container mt-10">
+			<div className="container my-10">
 				<SingleContent content={article.content} />
 			</div>
 
 			{/* RELATED POSTS */}
-			<SingleRelatedPosts />
+			{/* <SingleRelatedPosts /> */}
 		</div>
 	)
 }

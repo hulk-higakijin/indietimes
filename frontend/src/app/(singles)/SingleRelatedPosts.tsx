@@ -44,9 +44,9 @@ const SingleRelatedPosts: FC<SingleRelatedPostsProps> = ({
 						Related posts
 					</Heading>
 					<div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3 xl:grid-cols-4">
-						{/* {relatedPosts.map((post) => ( */}
-						{/* 	<Card11 key={post.id} post={post} /> */}
-						{/* ))} */}
+						{relatedPosts.map((post) => (
+							<Card11 key={post.id} post={post} />
+						))}
 					</div>
 				</div>
 

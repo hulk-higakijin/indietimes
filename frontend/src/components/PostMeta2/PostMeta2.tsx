@@ -14,6 +14,7 @@ export interface PostMeta2Props {
 	size?: 'large' | 'normal'
 	avatarRounded?: string
 	authorName?: string
+	author_id?: number
 	created_at?: string
 }
 
@@ -24,6 +25,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
 	size = 'normal',
 	avatarRounded,
 	authorName,
+	author_id,
 	created_at,
 }) => {
 	const { author, categories, readingTime } = meta
@@ -34,7 +36,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
 			} ${className}`}
 		>
 			<Link
-				href={author.href}
+				href={`/users/${author_id}`}
 				className="flex items-center space-x-2 rtl:space-x-reverse"
 			>
 				<Avatar
@@ -50,7 +52,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
 			</Link>
 			<div className="ms-3">
 				<div className="flex items-center">
-					<Link href={author.href} className="block font-semibold">
+					<Link href={`/users/${author_id}`} className="block font-semibold">
 						{authorName}
 					</Link>
 
@@ -72,7 +74,7 @@ const PostMeta2: FC<PostMeta2Props> = ({
 				<div className="mt-[6px] text-xs">
 					{created_at && (
 						<span className="text-neutral-700 dark:text-neutral-300">
-							{format(new Date(created_at), "MMMM dd, yyyy" )}
+							{format(new Date(created_at), 'MMMM dd, yyyy')}
 						</span>
 					)}
 					<span className="mx-2 font-semibold">·</span>

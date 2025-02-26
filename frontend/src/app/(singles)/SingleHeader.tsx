@@ -46,6 +46,7 @@ const SingleHeader: FC<SingleHeaderProps> = ({
 							hiddenCategories
 							avatarRounded="rounded-full shadow-inner"
               authorName={authorName}
+              author_id={article!.user_id}
               created_at={create_at}
 						/>
 						<SingleMetaAction2 />
